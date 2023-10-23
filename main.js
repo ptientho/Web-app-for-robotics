@@ -49,7 +49,6 @@ var app = new Vue({
             result: { success: false },
             status: { status: 0, text: '' },
 
-
         }
 
     },

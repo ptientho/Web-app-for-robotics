@@ -62,8 +62,6 @@
     </style>
 </head>
 
-
-
 <body>
     <div id="app" class="container-fluid">
         <div class="row">
@@ -153,15 +151,15 @@
                                         <!--buttons here!-->
                                         <div class="row">
                                             <div class="col-4">
-                                                <button :disabled="!connected || action.status.status == 1"
+                                                <button class="btn btn-primary" :disabled="!connected || action.status.status == 1"
                                                     @click="sendGoalPos1">Position 1</button>
                                             </div>
                                             <div class="col-4">
-                                                <button :disabled="!connected || action.status.status == 1"
+                                                <button class="btn btn-primary" :disabled="!connected || action.status.status == 1"
                                                     @click="sendGoalPos2">Position 2</button>
                                             </div>
                                             <div class="col-4">
-                                                <button :disabled="!connected || action.status.status == 1"
+                                                <button class="btn btn-primary" :disabled="!connected || action.status.status == 1"
                                                     @click="sendGoalPos3">Position 3</button>
                                             </div>
 
@@ -169,15 +167,15 @@
                                         <br>
                                         <div class="row">
                                             <div class="col-4">
-                                                <button :disabled="!connected || action.status.status == 1"
+                                                <button class="btn btn-primary" :disabled="!connected || action.status.status == 1"
                                                     @click="sendGoalPos4">Position 4</button>
                                             </div>
                                             <div class="col-4">
-                                                <button :disabled="!connected || action.status.status == 1"
+                                                <button class="btn btn-primary" :disabled="!connected || action.status.status == 1"
                                                     @click="sendGoalPos5">Position 5</button>
                                             </div>
                                             <div class="col-4">
-                                                <button :disabled="!connected || action.status.status == 1"
+                                                <button class="btn btn-primary" :disabled="!connected || action.status.status == 1"
                                                     @click="sendGoalPos6">Position 6</button>
                                             </div>
 
@@ -185,15 +183,15 @@
                                         <br>
                                         <div class="row">
                                             <div class="col-4">
-                                                <button :disabled="!connected || action.status.status == 1"
+                                                <button class="btn btn-primary" :disabled="!connected || action.status.status == 1"
                                                     @click="sendGoalPos7">Position 7</button>
                                             </div>
                                             <div class="col-4">
-                                                <button :disabled="!connected || action.status.status == 1"
+                                                <button class="btn btn-primary" :disabled="!connected || action.status.status == 1"
                                                     @click="sendGoalPos8">Position 8</button>
                                             </div>
                                             <div class="col-4">
-                                                <button :disabled="!connected || action.status.status == 1"
+                                                <button class="btn btn-primary" :disabled="!connected || action.status.status == 1"
                                                     @click="sendGoalPos9">Position 9</button>
                                             </div>
 
@@ -202,7 +200,7 @@
                                         <div class="row">
                                             <div class="col-4"></div>
                                             <div class="col-4">
-                                                <button :disabled="!connected || ![1].includes(action.status.status)"
+                                                <button class="btn btn-danger" :disabled="!connected || ![1].includes(action.status.status)"
                                                     @click="cancelGoal">Cancel</button>
                                             </div>
                                             <div class="col-4"></div>
