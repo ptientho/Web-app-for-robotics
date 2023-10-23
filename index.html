@@ -67,6 +67,7 @@
 <body>
     <div id="app" class="container-fluid">
         <div class="row">
+            <!-- Connection block occupied 3 grid size-->
             <div class="col-3 text-center">
                 <div class="card mt-2">
                     <div class="card-body">
@@ -91,13 +92,15 @@
                     </div>
                 </div>
             </div>
+
+            <!-- control elements occupied 9 grid size-->
             <div class="col-9">
                 <h3>Controls</h3>
                 <div class="row">
                     <div class="col-4">
                         <div class="card mt-2">
                             <div class="card-header">
-                                <h4>Robot model</h4>
+                                <h4 class="text-center">Robot model</h4>
                             </div>
                             <div class="card-body">
                                 <div id="div3DViewer"></div>
@@ -107,20 +110,20 @@
                     <div class="col-8">
                         <div class="card mt-2">
                             <div class="card-header">
-                                <h4>Generated Map</h4>
+                                <h4 class="text-center">Generated Map</h4>
                             </div>
                             <div class="card-body">
                                 <div id="map"></div>
                             </div>
-
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-4">
                         <div class="card mt-2">
                             <div class="card-header">
-                                <h4>Camera</h4>
+                                <h4 class="text-center">Camera</h4>
                             </div>
                             <div class="card-body">
 
@@ -130,18 +133,106 @@
                     </div>
                     <div class="col-8">
                         <div class="card mt-2">
+                            <!-- card element-->
                             <div class="card-header">
-                                <h4>Commands</h4>
-
+                                <h4 class="text-center">Commands</h4>
                             </div>
+
                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h5 class="text-center">Joystick</h5>
+                                        <hr>
+                                        <div id="dragstartzone" @mousedown="startDrag" @mousemove="doDrag">
+                                        </div>
+                                        <div id="dragCircle" :style="dragCircleStyle"></div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="text-center">Waypoints</h5>
+                                        <hr>
+                                        <!--buttons here!-->
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <button :disabled="!connected || action.status.status == 1"
+                                                    @click="sendGoalPos1">Position 1</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button :disabled="!connected || action.status.status == 1"
+                                                    @click="sendGoalPos2">Position 2</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button :disabled="!connected || action.status.status == 1"
+                                                    @click="sendGoalPos3">Position 3</button>
+                                            </div>
 
-                                <h5 class="text-left">Joystick</h5>
-                                <hr>
-                                <div id="dragstartzone" @mousedown="startDrag" @mousemove="doDrag">
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <button :disabled="!connected || action.status.status == 1"
+                                                    @click="sendGoalPos4">Position 4</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button :disabled="!connected || action.status.status == 1"
+                                                    @click="sendGoalPos5">Position 5</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button :disabled="!connected || action.status.status == 1"
+                                                    @click="sendGoalPos6">Position 6</button>
+                                            </div>
+
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <button :disabled="!connected || action.status.status == 1"
+                                                    @click="sendGoalPos7">Position 7</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button :disabled="!connected || action.status.status == 1"
+                                                    @click="sendGoalPos8">Position 8</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button :disabled="!connected || action.status.status == 1"
+                                                    @click="sendGoalPos9">Position 9</button>
+                                            </div>
+
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-4"></div>
+                                            <div class="col-4">
+                                                <button :disabled="!connected || ![1].includes(action.status.status)"
+                                                    @click="cancelGoal">Cancel</button>
+                                            </div>
+                                            <div class="col-4"></div>
+
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label class="text-muted">Feedback</label>
+                                                <p>{{ action.feedback.position }}</p>
+                                                <p>State: {{ action.feedback.state }}</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <label class="text-muted">Result</label>
+                                                <p>Succeeded? {{ action.result.success }}</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <label class="text-muted">Status</label>
+                                                <p>{{ action.status.text }}</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
                                 </div>
-                                <div id="dragCircle" :style="dragCircleStyle"></div>
+
                             </div>
+                            <!-- card element-->
+
                         </div>
                     </div>
                 </div>

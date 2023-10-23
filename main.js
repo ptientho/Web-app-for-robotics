@@ -41,6 +41,17 @@ var app = new Vue({
         tfClient: null,
         urdfClient: null,
 
+        //action
+        goal: null,
+        action: {
+            goal: { position: { x: 0, y: 0, z: 0 } },
+            feedback: { position: 0, state: 'idle' },
+            result: { success: false },
+            status: { status: 0, text: '' },
+
+
+        }
+
     },
     // helper methods to connect to ROS
     methods: {
@@ -237,8 +248,111 @@ var app = new Vue({
         unsetCamera() {
 
             document.getElementById('divCamera').innerHTML = ''
-        }
+        },
+        sendGoal: function () {
 
+            let actionClient = new ROSLIB.ActionClient({
+                ros: this.ros,
+                serverName: '/tortoisebot_as',
+                actionName: 'course_web_dev_ros/WaypointAction'
+            })
+
+            this.goal = new ROSLIB.Goal({
+                actionClient: actionClient,
+                goalMessage: this.action.goal,
+            })
+
+            this.goal.on('status', (status) => {
+                this.action.status = status
+            })
+
+            this.goal.on('feedback', (feedback) => {
+                this.action.feedback = feedback
+            })
+
+            this.goal.on('result', (result) => {
+                this.action.result = result
+            })
+
+            this.goal.send()
+
+        },
+        cancelGoal: function(){
+            this.goal.cancel()
+        },
+
+        sendGoalPos1: function(){
+        
+            this.action.goal.position.x = 0.6651526761626221
+            this.action.goal.position.y = -0.4795577157970588
+            this.action.goal.position.z = 0
+            this.sendGoal()
+        
+        },
+        sendGoalPos2: function(){
+        
+            this.action.goal.position.x = 0.6562840738349672
+            this.action.goal.position.y = 0.48647307167704706
+            this.action.goal.position.z = 0
+            this.sendGoal()
+        
+        },
+        sendGoalPos3: function(){
+        
+            this.action.goal.position.x = 0.23087315927409957
+            this.action.goal.position.y = 0.47514464201419954
+            this.action.goal.position.z = 0
+            this.sendGoal()
+        
+        },
+        sendGoalPos4: function(){
+        
+            this.action.goal.position.x = 0.19143743535213542
+            this.action.goal.position.y = 0.03457620028720394
+            this.action.goal.position.z = 0
+            this.sendGoal()
+        
+        },
+        sendGoalPos5: function(){
+        
+            this.action.goal.position.x = -0.1133238491417585
+            this.action.goal.position.y = -0.013586357332577697
+            this.action.goal.position.z = 0
+            this.sendGoal()
+        
+        },
+        sendGoalPos6: function(){
+        
+            this.action.goal.position.x = -0.1810594112125771
+            this.action.goal.position.y = 0.4703493204506495
+            this.action.goal.position.z = 0
+            this.sendGoal()
+        
+        },
+        sendGoalPos7: function(){
+        
+            this.action.goal.position.x = -0.6231508246917589
+            this.action.goal.position.y = 0.47637329817159724
+            this.action.goal.position.z = 0
+            this.sendGoal()
+        
+        },
+        sendGoalPos8: function(){
+        
+            this.action.goal.position.x = -0.18853543095858388
+            this.action.goal.position.y = -0.48416041763764833
+            this.action.goal.position.z = 0
+            this.sendGoal()
+        
+        },
+        sendGoalPos9: function(){
+        
+            this.action.goal.position.x = -0.48304228364701696
+            this.action.goal.position.y = -0.5295696157948706
+            this.action.goal.position.z = 0
+            this.sendGoal()
+        
+        },
     },
     mounted() {
         // page is ready
